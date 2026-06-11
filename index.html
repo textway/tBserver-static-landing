@@ -1601,7 +1601,7 @@
         display: flex;
         align-items: center;
         width: max-content;
-        animation: marquee 28s linear infinite;
+        animation: marquee 48s linear infinite;
       }
       .marquee-track:hover {
         animation-play-state: paused;
@@ -2705,15 +2705,33 @@
           <h2 class="sec-h2" data-r data-d="1" data-i18n="sp.h2">협력 파트너 및 PoC 진행 기업</h2>
         </div>
       </div>
-      <div class="marquee-outer" data-r>
+      <div class="marquee-outer" data-r aria-hidden="true">
         <div class="marquee-track">
+          <!-- 한 세트(=트랙의 절반)가 뷰포트를 채우도록 4종 로고를 3회 반복.
+               translateX(-50%) 무한 루프가 빈 공간 없이 매끄럽게 이어진다. -->
           <div class="marquee-set">
+            <img class="p-logo" src="uploads/2.avif" alt="동아일보" />
+            <img class="p-logo" src="uploads/3.avif" alt="AC:DC" />
+            <img class="p-logo" src="uploads/4.avif" alt="Y&amp;ARCHER" />
+            <img class="p-logo tall" src="uploads/5.avif" alt="MYSC" />
+            <img class="p-logo" src="uploads/2.avif" alt="동아일보" />
+            <img class="p-logo" src="uploads/3.avif" alt="AC:DC" />
+            <img class="p-logo" src="uploads/4.avif" alt="Y&amp;ARCHER" />
+            <img class="p-logo tall" src="uploads/5.avif" alt="MYSC" />
             <img class="p-logo" src="uploads/2.avif" alt="동아일보" />
             <img class="p-logo" src="uploads/3.avif" alt="AC:DC" />
             <img class="p-logo" src="uploads/4.avif" alt="Y&amp;ARCHER" />
             <img class="p-logo tall" src="uploads/5.avif" alt="MYSC" />
           </div>
           <div class="marquee-set" aria-hidden="true">
+            <img class="p-logo" src="uploads/2.avif" alt="" />
+            <img class="p-logo" src="uploads/3.avif" alt="" />
+            <img class="p-logo" src="uploads/4.avif" alt="" />
+            <img class="p-logo tall" src="uploads/5.avif" alt="" />
+            <img class="p-logo" src="uploads/2.avif" alt="" />
+            <img class="p-logo" src="uploads/3.avif" alt="" />
+            <img class="p-logo" src="uploads/4.avif" alt="" />
+            <img class="p-logo tall" src="uploads/5.avif" alt="" />
             <img class="p-logo" src="uploads/2.avif" alt="" />
             <img class="p-logo" src="uploads/3.avif" alt="" />
             <img class="p-logo" src="uploads/4.avif" alt="" />
