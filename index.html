@@ -75,7 +75,7 @@
         --navy-mid: #1a2740;
         --ink: #111827;
         --g700: #374151;
-        --g400: #9ca3af;
+        --g400: #6b7280;
         --g100: #f3f5f8;
         --tb-y: #f5c400;
         --tb-yl: #fff9db;
@@ -393,6 +393,10 @@
       }
 
       /* ── HERO ── */
+      #hero {
+        overflow: hidden;
+        background: #fff;
+      }
       .hero {
         max-width: var(--max);
         margin: 0 auto;
@@ -1089,7 +1093,7 @@
       }
       .pain-card-body {
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.55);
+        color: rgba(255, 255, 255, 0.62);
         line-height: 1.65;
         word-break: keep-all;
       }
@@ -1107,7 +1111,7 @@
       .pain-sol-body {
         font-size: 14px;
         line-height: 1.8;
-        color: rgba(255, 255, 255, 0.55);
+        color: rgba(255, 255, 255, 0.62);
         margin-bottom: 14px;
         word-break: keep-all;
       }
@@ -1657,7 +1661,7 @@
       .cta-sub {
         font-size: 17px;
         line-height: 1.75;
-        color: rgba(255, 255, 255, 0.55);
+        color: rgba(255, 255, 255, 0.62);
         margin-bottom: 36px;
         word-break: keep-all;
       }
@@ -1679,7 +1683,7 @@
         background: rgba(255, 255, 255, 0.08);
         font-size: 11px;
         font-weight: 700;
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 0.62);
         letter-spacing: 0.06em;
         white-space: nowrap;
       }
@@ -1694,7 +1698,7 @@
       }
       .hub-desc {
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.4);
+        color: rgba(255, 255, 255, 0.62);
         line-height: 1.6;
         word-break: keep-all;
       }
@@ -1726,7 +1730,7 @@
       .ft-desc {
         font-size: 13px;
         line-height: 1.8;
-        color: rgba(255, 255, 255, 0.36);
+        color: rgba(255, 255, 255, 0.62);
         max-width: 280px;
         word-break: keep-all;
         margin-bottom: 16px;
@@ -1736,13 +1740,13 @@
         font-weight: 700;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.28);
+        color: rgba(255, 255, 255, 0.62);
         margin-bottom: 16px;
       }
       .ft-col a {
         display: block;
         font-size: 14px;
-        color: rgba(255, 255, 255, 0.46);
+        color: rgba(255, 255, 255, 0.62);
         margin-bottom: 10px;
         transition: color 0.15s;
       }
@@ -1875,6 +1879,15 @@
         }
       }
     </style>
+    <!-- JS 비활성/실패 시 reveal 요소([data-r])가 숨겨진 채 남지 않도록 폴백 -->
+    <noscript>
+      <style>
+        [data-r] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
     <a class="skip-link" href="#hero" data-i18n="a11y.skip">본문 바로가기</a>
@@ -1894,7 +1907,7 @@
     </nav>
 
     <!-- 01 HERO -->
-    <section id="hero" style="overflow: hidden; background: #fff">
+    <section id="hero">
       <div class="hero">
         <!-- Left text -->
         <div>
@@ -2714,7 +2727,7 @@
     <section class="cta" id="cta">
       <div class="cta-in">
         <div class="cta-main">
-          <div class="eyebrow cta-ey" data-r>TB-SERVER LIVE NOW</div>
+          <div class="eyebrow cta-ey" data-r>TB-SERVER AVAILABLE NOW</div>
           <h2 class="sec-h2 cta-h2" data-r data-d="1" data-i18n="cta.h2">사내 지식 자산,<br />지금 바로 안전하게 연결하세요</h2>
           <p class="cta-sub" data-r data-d="2" data-i18n="cta.sub">
             권한이 검증된 설치형 솔루션 tB Server로 실시간 RAG 환경을 구축하세요.<br />
