@@ -90,6 +90,39 @@
       html {
         scroll-behavior: smooth;
       }
+      /* 모션 감소 설정 대응 — transition/animation 비활성, 스크롤 즉시 이동
+         (3-ACT 데모 rAF/타이머 시퀀스는 JS matchMedia로 별도 정지) */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+      /* 키보드 사용자용 본문 바로가기 — 포커스 시에만 노출 */
+      .skip-link {
+        position: absolute;
+        left: 12px;
+        top: -56px;
+        z-index: 2000;
+        background: var(--blue);
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: top 0.15s ease;
+      }
+      .skip-link:focus {
+        top: 12px;
+      }
       body {
         font-family:
           'Pretendard Variable',
@@ -1840,6 +1873,7 @@
     </style>
   </head>
   <body>
+    <a class="skip-link" href="#hero" data-i18n="a11y.skip">본문 바로가기</a>
     <!-- GNB -->
     <nav class="gnb" id="gnb">
       <div class="gnb-in">
@@ -1856,7 +1890,7 @@
     </nav>
 
     <!-- 01 HERO -->
-    <section style="overflow: hidden; background: #fff">
+    <section id="hero" style="overflow: hidden; background: #fff">
       <div class="hero">
         <!-- Left text -->
         <div>
@@ -1869,7 +1903,7 @@
           </p>
           <div class="trust-row" data-r data-d="2">
             <span class="trust-chip"
-              ><svg
+              ><svg aria-hidden="true"
                 width="12"
                 height="12"
                 viewBox="0 0 12 12"
@@ -1882,7 +1916,7 @@
               >Defense in Depth</span
             >
             <span class="trust-chip"
-              ><svg
+              ><svg aria-hidden="true"
                 width="12"
                 height="12"
                 viewBox="0 0 12 12"
@@ -1895,7 +1929,7 @@
               >On-Premise / VPC</span
             >
             <span class="trust-chip"
-              ><svg
+              ><svg aria-hidden="true"
                 width="12"
                 height="12"
                 viewBox="0 0 12 12"
@@ -1915,7 +1949,7 @@
         </div>
 
         <!-- Right: large stage animation -->
-        <div class="stage-wrap" data-r data-d="2" id="gateWrap">
+        <div class="stage-wrap" data-r data-d="2" id="gateWrap" aria-hidden="true">
           <div class="stage-frame">
             <div class="step-ind">
               <span class="step active" id="gs1" data-i18n="demo.step1">① 담기</span>
@@ -1930,7 +1964,7 @@
                 <div class="a1-wrap">
                   <div class="a1-stack" id="a1Stack">
                     <div class="a1-doc" id="ad0">
-                      <svg
+                      <svg aria-hidden="true"
                         width="9"
                         height="10"
                         viewBox="0 0 9 10"
@@ -1944,7 +1978,7 @@
                       ><span data-i18n="demo.doc0">예산.xlsx</span>
                     </div>
                     <div class="a1-doc" id="ad1">
-                      <svg
+                      <svg aria-hidden="true"
                         width="9"
                         height="10"
                         viewBox="0 0 9 10"
@@ -1958,7 +1992,7 @@
                       ><span data-i18n="demo.doc1">회의록.docx</span>
                     </div>
                     <div class="a1-doc" id="ad2">
-                      <svg
+                      <svg aria-hidden="true"
                         width="9"
                         height="10"
                         viewBox="0 0 9 10"
@@ -1972,7 +2006,7 @@
                       ><span data-i18n="demo.doc2">실적.xlsx</span>
                     </div>
                     <div class="a1-doc" id="ad3">
-                      <svg
+                      <svg aria-hidden="true"
                         width="9"
                         height="10"
                         viewBox="0 0 9 10"
@@ -1986,7 +2020,7 @@
                       ><span data-i18n="demo.doc3">공지.pdf</span>
                     </div>
                     <div class="a1-doc" id="ad4">
-                      <svg
+                      <svg aria-hidden="true"
                         width="9"
                         height="10"
                         viewBox="0 0 9 10"
@@ -2000,7 +2034,7 @@
                       ><span data-i18n="demo.doc4">매뉴얼.pdf</span>
                     </div>
                     <div class="a1-doc" id="ad5">
-                      <svg
+                      <svg aria-hidden="true"
                         width="9"
                         height="10"
                         viewBox="0 0 9 10"
@@ -2095,7 +2129,7 @@
                   <div class="a3-bottom">
                     <div class="a3-row">
                       <div class="a3-scope">
-                        <svg
+                        <svg aria-hidden="true"
                           width="11"
                           height="11"
                           viewBox="0 0 11 11"
@@ -2112,7 +2146,7 @@
                       <div class="a3-input">
                         <div class="a3-input-txt"><span id="a3q"></span><span class="gcursor" id="a3cur"></span></div>
                         <div class="gsend" id="a3send">
-                          <svg
+                          <svg aria-hidden="true"
                             width="9"
                             height="9"
                             viewBox="0 0 9 9"
@@ -2127,7 +2161,7 @@
                       </div>
                     </div>
                     <div class="a3-mode" style="margin: 2px 0 0">
-                      <svg
+                      <svg aria-hidden="true"
                         width="9"
                         height="9"
                         viewBox="0 0 11 11"
@@ -2150,7 +2184,7 @@
                         <span class="a3-src" data-i18n="demo.src2">#회의·회의록.docx</span>
                       </div>
                       <div class="a3-excl" id="a3excl">
-                        <svg
+                        <svg aria-hidden="true"
                           width="9"
                           height="9"
                           viewBox="0 0 9 9"
@@ -2185,7 +2219,7 @@
           <div class="pain-cards">
             <div class="pain-card" data-r>
               <div class="pain-card-ttl">
-                <svg
+                <svg aria-hidden="true"
                   width="15"
                   height="15"
                   viewBox="0 0 15 15"
@@ -2202,7 +2236,7 @@
             </div>
             <div class="pain-card" data-r>
               <div class="pain-card-ttl">
-                <svg
+                <svg aria-hidden="true"
                   width="15"
                   height="15"
                   viewBox="0 0 15 15"
@@ -2219,7 +2253,7 @@
             </div>
             <div class="pain-card" data-r>
               <div class="pain-card-ttl">
-                <svg
+                <svg aria-hidden="true"
                   width="15"
                   height="15"
                   viewBox="0 0 15 15"
@@ -2238,7 +2272,7 @@
         </div>
         <div>
           <div class="pain-arrow" data-r>
-            <svg
+            <svg aria-hidden="true"
               width="40"
               height="40"
               viewBox="0 0 40 40"
@@ -2263,7 +2297,7 @@
             Persona로 참여·전환하며, 모든 권한 평가와 캐시는 Persona 컨텍스트 기준으로 격리됩니다.
           </div>
           <a href="#permission" class="pain-sol-link" data-r data-d="3"
-            ><span data-i18n="pain.solLink">권한 구조 자세히 보기</span><svg
+            ><span data-i18n="pain.solLink">권한 구조 자세히 보기</span><svg aria-hidden="true"
               width="13"
               height="13"
               viewBox="0 0 13 13"
@@ -2390,7 +2424,7 @@
         <div class="bv-grid">
           <div class="bv-card" data-r>
             <div class="bv-icon" style="background: rgba(16, 185, 129, 0.1)">
-              <svg
+              <svg aria-hidden="true"
                 width="22"
                 height="22"
                 viewBox="0 0 22 22"
@@ -2410,7 +2444,7 @@
           </div>
           <div class="bv-card" data-r>
             <div class="bv-icon" style="background: rgba(27, 111, 224, 0.1)">
-              <svg
+              <svg aria-hidden="true"
                 width="22"
                 height="22"
                 viewBox="0 0 22 22"
@@ -2431,7 +2465,7 @@
           </div>
           <div class="bv-card" data-r>
             <div class="bv-icon" style="background: rgba(239, 68, 68, 0.1)">
-              <svg
+              <svg aria-hidden="true"
                 width="22"
                 height="22"
                 viewBox="0 0 22 22"
@@ -2472,7 +2506,7 @@
             <p class="did-card-desc" data-i18n="did.card0">로그인 세션 유효성, 역할(Persona)별 메뉴·기능 노출 제어</p>
           </div>
           <div class="did-arr" data-r>
-            <svg
+            <svg aria-hidden="true"
               width="20"
               height="20"
               viewBox="0 0 20 20"
@@ -2490,7 +2524,7 @@
             <p class="did-card-desc" data-i18n="did.card1">Bearer 토큰 검증, 요청 scope가 사용자 Team 멤버십 범위 내인지 확인</p>
           </div>
           <div class="did-arr" data-r>
-            <svg
+            <svg aria-hidden="true"
               width="20"
               height="20"
               viewBox="0 0 20 20"
@@ -2510,7 +2544,7 @@
             </p>
           </div>
           <div class="did-arr" data-r>
-            <svg
+            <svg aria-hidden="true"
               width="20"
               height="20"
               viewBox="0 0 20 20"
@@ -2547,7 +2581,7 @@
           <div class="feat-card" data-r>
             <div class="feat-tag ft-b" data-i18n="feat.tag0">설치형 인프라</div>
             <div class="feat-icon" style="background: rgba(27, 111, 224, 0.1)">
-              <svg
+              <svg aria-hidden="true"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -2572,7 +2606,7 @@
           <div class="feat-card" data-r>
             <div class="feat-tag ft-p" data-i18n="feat.tag1">AI 확장</div>
             <div class="feat-icon" style="background: rgba(139, 92, 246, 0.1)">
-              <svg
+              <svg aria-hidden="true"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -2594,7 +2628,7 @@
           <div class="feat-card" data-r>
             <div class="feat-tag ft-o" data-i18n="feat.tag2">자동화</div>
             <div class="feat-icon" style="background: rgba(245, 158, 11, 0.1)">
-              <svg
+              <svg aria-hidden="true"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -2619,7 +2653,7 @@
           <div class="feat-card" data-r>
             <div class="feat-tag ft-g" data-i18n="feat.tag3">감사 · 컴플라이언스</div>
             <div class="feat-icon" style="background: rgba(16, 185, 129, 0.1)">
-              <svg
+              <svg aria-hidden="true"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -2756,6 +2790,7 @@
       const EN_DESC =
         'An on-premise team knowledge base that builds permission hierarchy into the core of AI search — access scope is enforced at search and citation time, so team permissions never leak.';
       const I18N = {
+        'a11y.skip': `Skip to content`,
         'nav.cta': `Contact us`,
         'hero.h1': `Plug in AI search —<br /><em>permissions never leak</em>`,
         'hero.body': `The moment you centralize internal documents, "who can see what" falls apart — that's the real problem.<br />tB Server designs the permission hierarchy as the core structure of AI search.<br />It searches only within scope, and unauthorized content never appears in responses.`,
@@ -2989,6 +3024,8 @@
         let timers = [],
           typId = null,
           paused = false;
+        // 모션 감소 설정 시 데모 시퀀스를 돌리지 않고 reset() 정적 상태만 유지 (paused/reset 인터페이스 불변)
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         function T(fn, ms) {
           const id = setTimeout(fn, ms);
@@ -3013,7 +3050,7 @@
           const el = document.createElement('span');
           el.className = 'a1-chip ' + cls;
           el.innerHTML =
-            '<svg width="8" height="9" viewBox="0 0 8 9" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x=".5" y=".5" width="7" height="8" rx="1.5"/><path d="M1.5 3h5M1.5 5h5M1.5 7h3"/></svg>' +
+            '<svg aria-hidden="true" width="8" height="9" viewBox="0 0 8 9" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x=".5" y=".5" width="7" height="8" rx="1.5"/><path d="M1.5 3h5M1.5 5h5M1.5 7h3"/></svg>' +
             text;
           return el;
         }
@@ -3056,6 +3093,7 @@
         function run() {
           reset();
           if (paused) return;
+          if (reduceMotion) return; // 모션 감소: 정적 초기 상태만 표시, 시퀀스/자가 루프 미실행
           const D = DEMO[currentLang];
           const QUERY = D.query,
             ANS = D.ans;
