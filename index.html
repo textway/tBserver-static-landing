@@ -46,6 +46,9 @@
         "publisher": { "@type": "Organization", "name": "Textway", "url": "https://textway.net/" }
       }
     </script>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       rel="stylesheet"
@@ -54,7 +57,8 @@
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/png" href="uploads/blue-square.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="uploads/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="uploads/apple-touch-icon.png" />
     <style>
       *,
       *::before,
@@ -2765,7 +2769,7 @@
     <script>
       // GNB
       const gnb = document.getElementById('gnb');
-      window.addEventListener('scroll', () => gnb.classList.toggle('stuck', scrollY > 20));
+      window.addEventListener('scroll', () => gnb.classList.toggle('stuck', scrollY > 20), { passive: true });
       // Reveal
       const io = new IntersectionObserver(
         (e) =>
@@ -3265,6 +3269,25 @@
         });
         setTimeout(run, 1400);
         window.__demoRestart = run;
+
+        // 화면 밖이면 데모 시퀀스 정지(타이머 누적 방지), 재진입 시 재개 (Med#2)
+        const demoWrap = document.getElementById('gateWrap');
+        if ('IntersectionObserver' in window && demoWrap) {
+          new IntersectionObserver(
+            (entries) => {
+              if (entries[0].isIntersecting) {
+                if (!document.hidden) {
+                  paused = false;
+                  run();
+                }
+              } else {
+                paused = true;
+                reset();
+              }
+            },
+            { threshold: 0 },
+          ).observe(demoWrap);
+        }
       })();
     </script>
   </body>
